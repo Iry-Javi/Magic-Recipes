@@ -1,0 +1,15 @@
+<h1>All Magic Recipes</h1>
+
+{{#each recipes}}
+<p>{{recipetitle}}</p>
+<p>{{howtocook}}</p>
+<img src={{imageUrl}} alt="ricipe"/>
+
+<p>{{owner.username}}</p>
+
+<a href="/recipes/{{id}}/edit"><button>Edit Recipe</button></a>
+<form action="/recipes/{{id}}/delete" method="post">
+<button type="submit">Delete Recipe</button>
+</form>
+
+{{/each}}

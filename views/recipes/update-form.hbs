@@ -1,0 +1,10 @@
+<h2>Update my magic recipie</h2>
+
+<form action="/recipes/{{id}}/edit" method="post">
+    <input type="text" name="title" value="{{name}}">
+    <input type="text" name="howtocook" value="{{howtocook}}">
+    <input type="text" name="imageUrl" value="{{imageUrl}}">
+    <input type="hidden" name="owner" value="{{owner}}">
+
+    <button type="submit">Update Recipe</button>
+</form>

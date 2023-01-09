@@ -1,10 +1,15 @@
-// We reuse this import in order to have access to the `body` property in requests
-const express = require("express");
 
-// ℹ️ Responsible for the messages you see in the terminal as requests are coming in
-// https://www.npmjs.com/package/morgan
-const logger = require("morgan");
+const isLoggedIn = (req, res, next) => {
+    // checks if the user is logged in when trying to access a specific page
+    if (!req.session.currentUser) {
+      return res.redirect("/auth/login");
+    }
+    next();
+  };
+  
+  module.exports = isLoggedIn;
 
+<<<<<<< HEAD
 // ℹ️ Needed when we deal with cookies (we will when dealing with authentication)
 // https://www.npmjs.com/package/cookie-parser
 const cookieParser = require("cookie-parser");
@@ -59,3 +64,5 @@ module.exports = (app) => {
     })
   );
 };
+=======
+>>>>>>> main

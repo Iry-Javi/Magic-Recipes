@@ -20,9 +20,11 @@ require("./config")(app);
 
 // default value for title local
 const capitalize = require("./utils/capitalize");
+
 const projectName = "Magic-Recipes";
 
 app.locals.appTitle = `${capitalize(projectName)}`;
+
 
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
@@ -30,6 +32,9 @@ app.use("/", indexRoutes);
 
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
+
+// const recipesRoutes = require("./routes/recipe.routes");
+// app.use("/recipes", recipesRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

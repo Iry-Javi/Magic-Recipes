@@ -1,12 +1,14 @@
-<h1>Signup Page</h1>
 
-<form action="/auth/signup" method="post">
-    <input type="text" name="username" placeholder="Enter your username..." required>
-    <input type="email" name="email" placeholder="Enter your email..." required>
-    <input type="password" name="password" placeholder="Enter your password..." required>
-    <button type="submit">Create User</button>
-</form>
+  <h2>Signup</h2>
+  <form action="/auth/signup" method="POST">
+      <input type="text" name="username" placeholder="Username" required/>
+      <input type="email" name="email" placeholder="Email" required/>
+      <input type="password" name="password" placeholder="your password" required/>
 
-{{#if errorMessage}}
+    <button type="submit">Create account</button>
+  </form>
+
+  {{#if errorMessage}}
+
     <p class="error">{{errorMessage}}</p>
   {{/if}}
