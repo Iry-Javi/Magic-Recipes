@@ -10,29 +10,33 @@
    </head>
 
    <body>
-     {{#if loggedIn}}
-     <nav>
-        <ul>
-           
-           <li><a href="/auth/profile">Profile</a></li>
-           <li><a href="/recipes/create">Create your magic recipe</a></li>
-           <li><a href="/recipes">All Recipes</a></li>
-           <li>
-               <form action="/auth/logout" method="POST">
-               <button>Logout</button>
-               </form>
-            </li>
-         </ul>
-      </nav>
-      {{else}}
-      <nav>
-          <ul>
-            <li><a href="/"> Home </a></li>
-            <li><a href="/auth/signup">Signup</a></li>
-            <li><a href="/auth/login">Login</a></li>         
-          </ul>
-      </nav>
-      {{/if}}
+ <ul>
+
+
+      <ul>
+         {{!-- <form action="http://localhost:3000/recipes/" class="search-bar">
+            <input type="search-packages" placeholder="Search here">
+            <button type="search">Search</button>
+         </form> --}}
+         {{#if currentUser}}
+     <li><a href="/"> Home </a></li>
+     <li><a href="/auth/profile">Profile</a></li>
+     <li><a href="/recipes/create">Create your magic recipe</a></li>
+     <li><a href="/recipes">All Recipes</a></li>
+
+    
+     <li>
+            <form action="/auth/logout" method="POST">
+              <button>Logout</button>
+            </form>
+        </li>
+         {{else}}
+     <li><a href="/auth/signup">Signup</a></li>
+     <li><a href="/auth/login">Login</a></li>
+
+   {{/if}}
+     </ul>
+
 
 
       {{{body}}}

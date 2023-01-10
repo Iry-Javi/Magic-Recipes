@@ -1,8 +1,21 @@
   <h2>Create my Magic Recipe</h2>
  
   <form action="/recipes/create" method="post">
-    <input type="text" name="name" placeholder="Title" required/>
-    <input type="text" name="preparation" placeholder="How to cook" required/>
+
+    <input type="text" name="title" placeholder="Title" required/>
+
     <input type="text" name="imageUrl" placeholder="Image URL">
+    <input type="text" name="duration" placeholder="Duration" required/>
+    <input type="text" name="ingredients" placeholder="Ingredients" required/>
+    <input type="text" name="preparation" placeholder="How to cook" required/>
+    
+  <select name="cousine" id="cosine-select">
+    <option value="">--Please choose an option--</option>
+    <option value="latinamerican">Lanin American food</option>
+    <option value="mediterranian">Mediterranian food</option>
+    <option value="asian">Asian food</option>
+    <option value="italian">Italian food</option>
+    </select>
+
     <button type="submit">Create Magic Recipe</button>
   </form>

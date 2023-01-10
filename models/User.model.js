@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, SchemaTypes } = require("mongoose");
 
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
 const userSchema = new Schema(
@@ -19,7 +19,14 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true
+    },
+
+    recipes: {
+      type: [SchemaTypes.ObjectId],
+      ref: 'Recipe',
+      default:[]
     }
+
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`    
