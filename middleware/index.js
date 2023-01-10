@@ -6,10 +6,20 @@ const isLoggedIn = (req, res, next) => {
     }
     next();
   };
-  
-  module.exports = isLoggedIn;
 
-<<<<<<< HEAD
+  const isLoggedOut = (req, res, next) => {
+    if (req.session.currentUser) {
+        next(); // execute the next action for this route
+    }
+    else{
+        return res.redirect('/');
+    }
+
+  };
+
+  module.exports = {isLoggedIn, isLoggedOut};
+
+
 // ℹ️ Needed when we deal with cookies (we will when dealing with authentication)
 // https://www.npmjs.com/package/cookie-parser
 const cookieParser = require("cookie-parser");
@@ -64,5 +74,3 @@ module.exports = (app) => {
     })
   );
 };
-=======
->>>>>>> main

@@ -12,17 +12,17 @@ router.get('/', (req, res, next) => {
 });
 
 
-router.get('/create', isLoggedIn, (req, res, next) => {
+router.get('/create',  (req, res, next) => {
     console.log("when you click on create recipe", req.session.currentUser)
     res.render('recipes/create-form')
 })
 
 router.post('/create', (req, res, next) => {
-    const {title, howtocook, imageUrl} = req.body;
+    const {title, preparation, imageUrl} = req.body;
 
     Recipe.create({
         title,
-        howtocook,
+        preparation,
         imageUrl,
         owner: req.session.currentUser._id
     })
@@ -46,12 +46,12 @@ router.get('/:id/edit', async (req, res, next) => {
   });
   
   router.post('/:id/edit', async (req, res, next) => {
-    const { title, howtocook, imageUrl } = req.body;
+    const { title, preparation, imageUrl } = req.body;
     const { id } = req.params;
   
     const theRecipe = await Recipe.findById(id)
     if(theRecipe.owner.toString() === req.session.currentUser._id){
-        Recipe.findByIdAndUpdate(id, {title, howtocook, imageUrl})
+        Recipe.findByIdAndUpdate(id, {title, preparation, imageUrl})
         .then(() => res.redirect('/recipes'))
         .catch(err => console.log(err))
       } 

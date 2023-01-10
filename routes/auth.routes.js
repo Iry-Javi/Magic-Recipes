@@ -4,9 +4,10 @@ const saltRounds = 10;
 
 const User = require('../models/User.model');
 
+const { isLoggedIn, isLoggedOut } = require('../middleware/index');
 
 router.get("/signup", (req, res) => {
-  res.render("auth/signup");
+  res.render("auth/signup", { loggedIn: false} );
 })
 router.post("/signup", async (req, res ) => {
   const { username, password, email } = req.body;
@@ -34,7 +35,7 @@ router.post("/signup", async (req, res ) => {
 })
 
 router.get("/login", (req, res) => {
-  res.render("auth/login")
+  res.render("auth/login", { loggedIn: true} )
 })
 router.post("/login", (req, res ) => {
   const { username, password } = req.body;
@@ -66,8 +67,9 @@ router.post("/login", (req, res ) => {
   .catch(error => console.log(error));
 })
 
-router.get("/profile", (req, res) => {
+router.get("/profile",  (req, res) => {
   console.log(req.session.currentUser)
+ 
   res.render("auth/profile", {user: req.session.currentUser})
 })
 

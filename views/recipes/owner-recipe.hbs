@@ -1,0 +1,10 @@
+<p>{{recipe.title}}</p>
+<p>{{recipe.preparation}}</p>
+<img src={{recipe.imageUrl}} alt="room" />
+
+{{#if ({{recipe.owner.toString()}} === {{user._id}})}}
+<a href="/recipe/{{recipe.id}}/edit"><button>Edit</button></a>
+<form action="/recipes/{{recipe.id}}/delete" method="post">
+    <button type="submit">Delete</button>
+</form>
+{{/if}}
