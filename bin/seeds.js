@@ -22,7 +22,7 @@ const recipes = [
      title: ' Borscht ', 
      imageUrl: 'https://static.wixstatic.com/media/293fdb_5c7fdd317f334787bc552e1e380abd58~mv2.jpg', 
      duration: 65, 
-     ingredients: `1 package pork sausage', '3 beets', ' 3 carrots', '3 potatoes', 'half head cabbage', '1 cup diced tomatoes', '1 table spoon vegetable oil', '1 onion', '1 can tomato paste', '8 3/4 cups water', '3 cloves garlic', '1 teaspoon white sugar', 'salt and pepper', 'half cup sour cream', '1 tablespoon chopped fresh parsley`, 
+     ingredients: ['1 package pork sausage', '3 beets', ' 3 carrots', '3 potatoes', 'half head cabbage', '1 cup diced tomatoes', '1 table spoon vegetable oil', '1 onion', '1 can tomato paste', '8 3/4 cups water', '3 cloves garlic', '1 teaspoon white sugar', 'salt and pepper', 'half cup sour cream', '1 tablespoon chopped fresh parsley'], 
 
      preparation: `Step 1. Crumble sausage into a skillet set over medium-high heat. Cook and stir until no longer pink. Remove from the heat and set aside.
      Step 2. Fill a large pot halfway with water (about 8 cups) and bring to a boil.
@@ -39,11 +39,11 @@ const recipes = [
      title: 'Paella', 
      imageUrl: 'https://www.thespruceeats.com/thmb/rWeSaLTQeF1NJePa_HP5Tabf3jo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/fresh-paella-in-pan-on-wooden-table-556668991-5843564b5f9b5851e5745d5a.jpg', 
      duration: 55, 
-     ingredients: `' 2 tablespoons olive oil', '1 onion finely diced', 
-     '½ tomato, finely diced'
-     '1 pinch salt'
-     '½ tablespoon smoked paprika'
-    ' 6 fresh romano or green beans'
+     ingredients: [' 2 tablespoons olive oil', '1 onion finely diced', 
+     '½ tomato, finely diced',
+     '1 pinch salt',
+     '½ tablespoon smoked paprika',
+    ' 6 fresh romano or green beans',
     '½ cup canned butter beans, drained and rinsed', 
     '½ cup white rice', 
     '6 large shrimp',
@@ -54,9 +54,9 @@ const recipes = [
     '1 pinch saffron threads',
     '1 teaspoon finely chopped fresh rosemary',
     '1 cup fresh peas',
-    '5 baby squid, cut into rings and tentacles',
-    '1 lemon, cut into wedges',
-    '1 tablespoon chopped fresh flat-leaf parsley'`,  
+    '5 baby squid cut into rings and tentacles',
+    '1 lemon cut into wedges',
+    '1 tablespoon chopped fresh flat-leaf parsley'],  
      preparation: `Step 1. Heat olive oil in a large skillet or paella pan over high heat. Cook and stir onion, tomato, salt, and smoked paprika into the hot oil until softened, about 3 minutes. Add romano beans, butter beans, and rice; cook and stir until rice is coated with oil, 2 to 3 minutes.
      Step 2. Place shrimp, mussels, and clams over the top of the rice mixture. Pour in white wine and seafood stock; sprinkle in saffron threads and rosemary. Bring mixture to a simmer. Turn shellfish and continue to cook until clams and mussels have opened, and shrimp are pink and cooked through, about 5 minutes. Remove clams, mussels, and shrimp and set aside.
      Step 3. Stir peas into the paella; simmer, uncovered, until rice is tender and has absorbed the liquid, 20 to 25 minutes. Stir in squid, and return clams, mussels, and shrimp to the pan. Cook until squid is opaque and cooked through, 2 to 3 more minutes. Serve with lemon wedges and chopped parsley.`, 
