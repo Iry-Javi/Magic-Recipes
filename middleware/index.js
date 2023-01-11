@@ -6,7 +6,7 @@ const isLoggedIn = (req, res, next) => {
     }
     next();
   };
-<<<<<<< HEAD
+
 
   const isLoggedOut = (req, res, next) => {
     if (req.session.currentUser) {
@@ -75,7 +75,7 @@ module.exports = (app) => {
     })
   );
 };
-=======
+
   
 
 
@@ -107,4 +107,4 @@ module.exports = (app) => {
     isOwner,
     isNotOwner
   };
->>>>>>> main
+

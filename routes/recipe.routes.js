@@ -38,10 +38,6 @@ router.get('/create',  (req, res, next) => {
     res.render('recipes/create-form')
 })
 
-<<<<<<< HEAD
-router.post('/create', (req, res, next) => {
-    const {title, preparation, imageUrl} = req.body;
-=======
 router.post('/create', async (req, res, next) => {
     const {cousine, title, imageUrl, duration, ingredients, preparation} = req.body;
   try{
@@ -57,7 +53,7 @@ router.post('/create', async (req, res, next) => {
     console.log(err)
   }
     
->>>>>>> main
+
 
 
  /*    Recipe.create({
@@ -76,7 +72,8 @@ router.get('/:id/edit', async (req, res, next) => {
     console.log("req.params",req.params)
     const { id } = req.params;
   
-    const theRecipe = await Recipe.findById(id)
+    const theRecipe = await 
+    Recipe.findById(id)
     if(theRecipe.owner.toString() === req.session.currentUser._id){
       Recipe.findById(id)
       .then(foundRecipe => res.render('recipes/update-form', foundRecipe))
@@ -88,20 +85,17 @@ router.get('/:id/edit', async (req, res, next) => {
   });
   
   router.post('/:id/edit', async (req, res, next) => {
-<<<<<<< HEAD
-    const { title, preparation, imageUrl } = req.body;
-=======
+
+
     const { cousine, title, imageUrl, duration, ingredients, preparation } = req.body;
->>>>>>> main
+
     const { id } = req.params;
   
     const theRecipe = await Recipe.findById(id)
     if(theRecipe.owner.toString() === req.session.currentUser._id){
-<<<<<<< HEAD
-        Recipe.findByIdAndUpdate(id, {title, preparation, imageUrl})
-=======
+
         Recipe.findByIdAndUpdate(id, {cousine, title, imageUrl, duration, ingredients, preparation })
->>>>>>> main
+
         .then(() => res.redirect('/recipes'))
         .catch(err => console.log(err))
       } 
@@ -124,7 +118,7 @@ router.get('/:id/edit', async (req, res, next) => {
   });
   
 
-  //////////////////////////////////////////////////
+  
 
 router.get('/:id/comment', isLoggedIn, isNotOwner, (req, res, next) => {
 
