@@ -63,7 +63,66 @@ const recipes = [
      owner: {}, 
      comments: []
 
+    },
+
+    { cousine: "asian",
+     title: ' Miso Soup ', 
+     imageUrl: 'https://files.selecthealth.cloud/api/public/content/221392-Miso_soup_blog_lg.jpg', 
+     duration: 15, 
+     ingredients: `· Water: This easy miso soup recipe starts with four cups of water.
+     · Dashi granules and miso paste: Dashi granules and miso paste give the soup a bold, savory flavor base.
+     · Tofu: The protein in this miso soup is a package of diced silken tofu.
+     · Green onions: Diced green onions add a burst of color and flavor.`, 
+
+     preparation: `Here's a brief overview of what you can expect when you make classic miso soup at home:
+     1. Bring the water and dashi granules to a boil.
+     2. Reduce the heat and whisk in miso paste.
+     3. Stir in the tofu and green onions.
+     4. Simmer and serve.`, 
+     owner: {}, 
+     comments: []
+    },
+
+    { cousine: "latinamerican", 
+     title: ' Chilean Empanadas with Beef ', 
+     imageUrl: 'https://files.selecthealth.cloud/api/public/content/221392-Miso_soup_blog_lg.jpg', 
+     duration: 120, 
+     ingredients: `For the beef filling:
+     2 tablespoons of oil
+     2 lb of chopped beef (top sirloin is a good choice)
+     1/2 teaspoon of paprika
+     1/2 teaspoon of dry oregano
+     1 teaspoon of salt
+     Pepper to taste
+     1/2 teaspoon of cumin
+     1/2 cup of water
+     1 large onion chopped into small cubes
+     1 tablespoon all-purpose flour
+
+     For the dough:
+     1/2 cup of milk
+     1/2 cup of warm water
+     2 teaspoons of table salt
+     1 lb all-purpose flour
+     2 egg yolks
+     3 oz of melted butter
+
+     For the stuffing:
+     20 black olives
+     40 raisins
+     3 hard-boiled eggs, quartered
+     1 egg, beaten (to brush on empanadas)`, 
+
+     preparation: `Step 1. Beef: In a large frying pan, heat oil at medium to high heat. Sauté the meat for 3 minutes without mixing. Turn over and brown for another 3 minutes. Add paprika, oregano, salt, pepper and cumin, and mix well. Add water and the chopped onion. Cook for 30 minutes on low heat. Add flour and mix well, modifying the seasoning if you like. Turn off heat; leave to cool and refrigerate.
+     Step 2. Dough: In a small bowl, combine milk, water and salt to form a brine. Stir until salt is completely dissolved. In a separate large bowl, combine the flour and egg yolks, and mix using a fork. Add butter and knead dough for about 10 minutes while adding the brine until it is smooth and elastic. If dough is too dry and you need more moisture, add a little bit more water and milk, but no salt.
+     Step 3. Preheat oven to 350°F.
+     Step 4. Separate dough into 10 portions and cover with a clean kitchen cloth. Working each portion individually, shape into a ball and with a rolling pin smooth out the dough to about the size of a salad plate (8 inches). Fill each round of dough with 2 tablespoons of beef, a slice of hard-boiled egg, 2 black olives and 4 raisins.
+     Step 5. Lightly brush the edges with milk, press firmly and fold. Make sure to release trapped air before closing. Brush the top of the empanadas with egg batter and water before putting them in the oven.
+     Step 6. Bake for 30 to 35 minutes until browned, keeping a close eye on them. If they bubble up or swell, poke dough with a toothpick so that they don't come undone or open up. Serve hot. Yields 5 servings of 2 empanadas each.`, 
+     owner: {}, 
+     comments: []
     }
+
 
 ];
 

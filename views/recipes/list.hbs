@@ -13,7 +13,6 @@
 </form>
 
 {{#each recipes}}
-
 <h4>{{cousine}}</h4>
 <h3>{{title}}</h3>
 <img src={{imageUrl}} alt="recipe"/>
@@ -22,18 +21,19 @@
 <p>{{preparation}}</p>
 
 
-
 <p>{{owner.username}}</p>
 
+<h1>Write comment for {{name}}</h1>
 
-{{!-- <a href="/recipes/{{id}}/edit"><button>Edit Recipe</button></a>
-<form action="/recipes/{{id}}/delete" method="post">
-<button type="submit">Delete Recipe</button>
-</form> --}}
+<form action="/recipes/{{_id}}/comment" method="post">
+    <input type="text" name="comment" placeholder="Write your comment" required>
 
-<a href="/recipes/{{_id}}/comment"><button>Write a comment</button></a>
 
-{{#each comment}}
-<p>{{this}}</p>
+    <button type="submit">Send Comment</button>
+</form>
+<h4>Comments:</h4>
+{{#each this.comments}}
+
+<p>{{comment}}</p> 
 {{/each}}
 {{/each}}

@@ -7,16 +7,15 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>{{appTitle}}</title>
       <link rel="stylesheet" href="/stylesheets/style.css" />
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
    </head>
 
    <body>
 
       <ul>
-         {{!-- <form action="http://localhost:3000/recipes/" class="search-bar">
-            <input type="search-packages" placeholder="Search here">
-            <button type="search">Search</button>
-         </form> --}}
          {{#if currentUser}}
+         
      <li><a href="/"> Home </a></li>
      <li><a href="/auth/profile">Profile</a></li>
      <li><a href="/recipes/create">Create your magic recipe</a></li>
@@ -27,6 +26,15 @@
             <form action="/auth/logout" method="POST">
               <button>Logout</button>
             </form>
+ {{!-- <nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <form action="/auth/logout" method="POST" class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">logout</button>
+    </form>
+  </div>
+</nav> --}}
+
         </li>
          {{else}}
      <li><a href="/auth/signup">Signup</a></li>
@@ -36,10 +44,12 @@
      </ul>
 
 
-
       {{{body}}}
 
       <script src="/js/script.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
    </body>
 
 </html>

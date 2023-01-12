@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const fileUploader = require("../config/cloudinary")
 
 const {isLoggedIn} = require("../middleware/index")
 
@@ -9,71 +9,59 @@ const User = require('../models/User.model');
 const Comment = require('../models/Comment.model')
 const { isOwner } = require('../middleware/index');
 const { isNotOwner } = require('../middleware/index');
+const { Error } = require('mongoose');
 
-router.get('/', (req, res, next) => {
+
+router.get('/', async (req, res, next) => {
   const  {cousine} = req.query
   if(cousine !== undefined) {
     console.log(req.query)
-    Recipe.find({cousine})
+    Recipe.find({cousine}).populate("comments")
     .then(recipes => {
       console.log(recipes.length)
       res.render('recipes/list', {recipes, user:req.session.currentUser})})
     .catch(err => console.log(err))
   }
   else{
-    Recipe.find()
+    Recipe.find().populate("comments")
     .then(recipes => {
       console.log(recipes.length)
-      res.render('recipes/list', {recipes, user:req.session.currentUser})})
+       res.render('recipes/list', {recipes, user:req.session.currentUser})})
     .catch(err => console.log(err))
   }
+
 });
   
-  
-  
 
-
-router.get('/create',  (req, res, next) => {
+router.get('/create', isLoggedIn, (req, res, next) => {
     console.log("when you click on create recipe", req.session.currentUser)
     res.render('recipes/create-form')
 })
 
-router.post('/create', async (req, res, next) => {
-    const {cousine, title, imageUrl, duration, ingredients, preparation} = req.body;
-  try{
-    const user = await User.findById(req.session.currentUser._id)// finding the user at our database
-    const recipe = await Recipe.create({cousine, title, imageUrl, duration, ingredients, preparation, owner:req.session.currentUser._id})//create the Recipe at our database
-    user.recipes.push(recipe) // putting the recipe inside the user.recipes array
-    await user.save() //save user
 
-    res.redirect("/recipes")
+router.post('/create', fileUploader.single("imageUrl"),  (req, res, next) => { //async
+    const {cousine, title, duration, ingredients, preparation} = req.body;
+    console.log(req.file.path)
 
-  }
-  catch(err){
-    console.log(err)
-  }
-    
+    User.findById(req.session.currentUser._id)
+    .then((user)=>{
+      Recipe.create({cousine, title, imageUrl: req.file.path, duration, ingredients, preparation, owner:req.session.currentUser._id})
+      .then((newRec) =>{
+        console.log('my new recipe', newRec._id)
+        user.recipes.push(newRec._id)
+        user.save()
+        res.redirect("/recipes")})
+      })
+      .catch((err) => console.log(err))
 
+  })
 
-
- /*    Recipe.create({
-        title,
-        preparation,
-        imageUrl,
-        owner: req.session.currentUser._id
-    })
-    .then((recipe) => user.recipes.push(recipe)  )
-    .then(() => res.redirect('/recipes') )
-
-    .catch(err => console.log(err)) */
-})
 
 router.get('/:id/edit', async (req, res, next) => {
     console.log("req.params",req.params)
     const { id } = req.params;
   
-    const theRecipe = await 
-    Recipe.findById(id)
+    const theRecipe = await Recipe.findById(id)
     if(theRecipe.owner.toString() === req.session.currentUser._id){
       Recipe.findById(id)
       .then(foundRecipe => res.render('recipes/update-form', foundRecipe))
@@ -83,30 +71,33 @@ router.get('/:id/edit', async (req, res, next) => {
     }
    
   });
-  
-  router.post('/:id/edit', async (req, res, next) => {
 
 
-    const { cousine, title, imageUrl, duration, ingredients, preparation } = req.body;
-
+  router.post('/:id/edit', fileUploader.single("imageUrl"), async (req, res, next) => {
+    const { cousine, title, existingImage, duration, ingredients, preparation } = req.body;
     const { id } = req.params;
+    const { path } = req.file;
   
+    let imageUrl;
+    if (req.file) {
+      imageUrl = path;
+    } else {
+      imageUrl = existingImage;
+    }
+console.log(imageUrl)
     const theRecipe = await Recipe.findById(id)
     if(theRecipe.owner.toString() === req.session.currentUser._id){
-
         Recipe.findByIdAndUpdate(id, {cousine, title, imageUrl, duration, ingredients, preparation })
-
         .then(() => res.redirect('/recipes'))
         .catch(err => console.log(err))
       } 
     
   });
   
+
   router.post('/:id/delete', async (req, res, next) => {
     const { id } = req.params;
-  
     const theRecipe = await Recipe.findById(id)
-    
     if(theRecipe.owner.toString() === req.session.currentUser._id){
       Recipe.findByIdAndDelete(id)
       .then(() => res.redirect('/recipes'))
@@ -116,8 +107,6 @@ router.get('/:id/edit', async (req, res, next) => {
     }
   
   });
-  
-
   
 
 router.get('/:id/comment', isLoggedIn, isNotOwner, (req, res, next) => {
@@ -161,4 +150,3 @@ router.post('/:recipeId/comment', (req, res, next) => {
 });
 
   module.exports = router;
-  
