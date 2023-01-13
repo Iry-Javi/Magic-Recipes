@@ -13,7 +13,7 @@ const recipes = [
      STEP 2
      Drain well, reserving 4 tbsp of the cooking liquid. Return the potatoes, pasta and beans to the pan, then stir in the fresh pesto and reserved cooking liquid. Season to taste, divide between four serving plates and drizzle with a little olive oil`,
 
-     owner: {}, 
+     owner: mongoose.Types.ObjectId('63c10bba681b02f9e9ce8340'), 
      comments: []
     },
 
@@ -30,7 +30,7 @@ const recipes = [
      Step 5. Heat oil in a skillet over medium heat. Add onion and cook until tender. Stir in tomato paste and remaining 3/4 cup water until well blended. Transfer to the pot.
      Step 6. Add garlic to the soup, cover, and turn off the heat. Let stand 5 minutes. Stir in sugar and season with salt and pepper.
      Step 7. Ladle into serving bowls. Garnish with sour cream and parsley.`, 
-     owner: {}, 
+     owner: mongoose.Types.ObjectId('63c10bba681b02f9e9ce8340'), 
      comments: []
     },
 
@@ -60,7 +60,7 @@ const recipes = [
      preparation: `Step 1. Heat olive oil in a large skillet or paella pan over high heat. Cook and stir onion, tomato, salt, and smoked paprika into the hot oil until softened, about 3 minutes. Add romano beans, butter beans, and rice; cook and stir until rice is coated with oil, 2 to 3 minutes.
      Step 2. Place shrimp, mussels, and clams over the top of the rice mixture. Pour in white wine and seafood stock; sprinkle in saffron threads and rosemary. Bring mixture to a simmer. Turn shellfish and continue to cook until clams and mussels have opened, and shrimp are pink and cooked through, about 5 minutes. Remove clams, mussels, and shrimp and set aside.
      Step 3. Stir peas into the paella; simmer, uncovered, until rice is tender and has absorbed the liquid, 20 to 25 minutes. Stir in squid, and return clams, mussels, and shrimp to the pan. Cook until squid is opaque and cooked through, 2 to 3 more minutes. Serve with lemon wedges and chopped parsley.`, 
-     owner: {}, 
+     owner: mongoose.Types.ObjectId('63c10bba681b02f9e9ce8340'), 
      comments: []
 
     },
@@ -79,7 +79,7 @@ const recipes = [
      2. Reduce the heat and whisk in miso paste.
      3. Stir in the tofu and green onions.
      4. Simmer and serve.`, 
-     owner: {}, 
+     owner: mongoose.Types.ObjectId('63c10bba681b02f9e9ce8340'), 
      comments: []
     },
 
@@ -119,7 +119,7 @@ const recipes = [
      Step 4. Separate dough into 10 portions and cover with a clean kitchen cloth. Working each portion individually, shape into a ball and with a rolling pin smooth out the dough to about the size of a salad plate (8 inches). Fill each round of dough with 2 tablespoons of beef, a slice of hard-boiled egg, 2 black olives and 4 raisins.
      Step 5. Lightly brush the edges with milk, press firmly and fold. Make sure to release trapped air before closing. Brush the top of the empanadas with egg batter and water before putting them in the oven.
      Step 6. Bake for 30 to 35 minutes until browned, keeping a close eye on them. If they bubble up or swell, poke dough with a toothpick so that they don't come undone or open up. Serve hot. Yields 5 servings of 2 empanadas each.`, 
-     owner: {}, 
+     owner: mongoose.Types.ObjectId('63c10bba681b02f9e9ce8340'), 
      comments: []
     }
 
@@ -146,49 +146,4 @@ mongoose
   })
   .catch(err => {
     console.log(`An error occurred while creating recipes from the DB: ${err}`);
-
-  });
-
-
-// const mongoose = require("mongoose");
-// const Recipe = require("../models/Recipe.model"); // the DroneModel will be used to create new drones in our DB
-
-// // the array of drone objects to be created
-// const recipes = [
-//   { cuisine: "italian", title: 'Italian Pasta', imageUrl: 'public/images/italian-pasta.jpg', duration: '30', ingredients: ['salz', 'flour'], preparation: 'fhfhjgjhg', owner: {}, comments: []},
-  
-//   { cuisine: "italian", title: 'Italian Pasta', imageUrl: 'public/images/italian-pasta.jpg', duration: '30', ingredients: ['salz', 'flour'], preparation: 'fhfhjgjhg', owner: {}, comments: []},
-
-//   { cuisine: "italian", title: 'Italian Pasta', imageUrl: 'public/images/italian-pasta.jpg', duration: '30', ingredients: ['salz', 'flour'], preparation: 'fhfhjgjhg', owner: {}, comments: []}
-
-// ];
-
-// // below is the exact same database connection setup as our main app 'db/index.js'
-// // inside the .then() block we will seed our DB (Once the DB connection is established)
-
-
-// const MONGO_URI =
-//   process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/project2";
-
-// mongoose
-//   .connect(MONGO_URI)
-//   .then(x => {
-//     console.log(`Connected to Mongo database: "${x.connections[0].name}"`);
- 
-//     // Create new documents in the books collection
-//     return Recipe.create(recipes);
-//   })
-//   .then(recipesFromDB => {
-//     console.log(`Created ${recipesFromDB.length}recipes`);
- 
-//     // Once the documents are created, close the DB connection
-//     return mongoose.connection.close();
-//   })
-//   .then(() => {
-//     // Once the DB connection is closed, print a message
-//     console.log('DB connection closed!');
-//   })
-//   .catch(err => {
-//     console.log(`An error occurred while creating recipes from the DB: ${err}`);
-//   });
-
+    });

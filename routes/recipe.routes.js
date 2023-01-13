@@ -27,6 +27,8 @@ router.get('/', async (req, res, next) => {
     Recipe.find().populate("comments")
     .then(recipes => {
       console.log(recipes.length)
+     
+      // if it is add a property canEdit:true to the recipe
        res.render('recipes/list', {recipes, user:req.session.currentUser})})
     .catch(err => console.log(err))
   }
@@ -63,10 +65,12 @@ router.post('/create', fileUploader.single("imageUrl"),  (req, res, next) => { /
 router.get('/:id/edit', async (req, res, next) => {
     console.log("req.params",req.params)
     const { id } = req.params;
-  
+    
     const theRecipe = await Recipe.findById(id)
-    if(theRecipe.owner.toString() === req.session.currentUser._id){
-      Recipe.findById(id)
+    console.log('recipe owner', theRecipe.owner)
+    console.log('currentUser id', req.session.currentUser._id)
+    if(theRecipe.owner && theRecipe.owner.toString() === req.session.currentUser._id){
+      Recipe.findByIdAndUpdate(id)
       .then(foundRecipe => res.render('recipes/update-form', foundRecipe))
       .catch(err => console.log(err))
     }else {
@@ -79,11 +83,13 @@ router.get('/:id/edit', async (req, res, next) => {
   router.post('/:id/edit', fileUploader.single("imageUrl"), async (req, res, next) => {
 
     const { cuisine, title, existingImage, duration, ingredients, preparation } = req.body;
+    console.log('req body', req.body)
     const { id } = req.params;
-    const { path } = req.file;
+  
   
     let imageUrl;
     if (req.file) {
+      const { path } = req.file;
       imageUrl = path;
     } else {
       imageUrl = existingImage;
