@@ -5,22 +5,22 @@ const saltRounds = 10;
 const User = require('../models/User.model');
 
 
-router.get("/Signup", (req, res) => {
-  res.render("auth/Signup");
+router.get("/signup", (req, res) => {
+  res.render("auth/signup");
 })
-router.post("/Signup", async (req, res ) => {
+router.post("/signup", async (req, res ) => {
   const { username, password, email } = req.body;
  
 
   if (!username || !password || !email) {
-    res.render('auth/Signup', { errorMessage: 'All fields are mandatory. Please provide your username, email and password.' });
+    res.render('auth/signup', { errorMessage: 'All fields are mandatory. Please provide your username, email and password.' });
     return;
   }
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
   if(!regex.test(password)){
     res
     .status(500)
-    .render("auth/Signup", {errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.'});
+    .render("auth/signup", {errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.'});
     return;
   }
   const passwordHash = await bcrypt.hash(password, saltRounds);
