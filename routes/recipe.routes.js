@@ -13,6 +13,7 @@ const { Error } = require('mongoose');
 
 
 router.get('/', async (req, res, next) => {
+
   const  {cuisine} = req.query
   if(cuisine !== undefined) {
     console.log(req.query)
@@ -40,11 +41,13 @@ router.get('/create', isLoggedIn, (req, res, next) => {
 
 
 router.post('/create', fileUploader.single("imageUrl"),  (req, res, next) => { //async
+
     const {cuisine, title, duration, ingredients, preparation} = req.body;
     console.log(req.file.path)
 
     User.findById(req.session.currentUser._id)
     .then((user)=>{
+
       Recipe.create({cuisine, title, imageUrl: req.file.path, duration, ingredients, preparation, owner:req.session.currentUser._id})
       .then((newRec) =>{
         console.log('my new recipe', newRec._id)
@@ -74,6 +77,7 @@ router.get('/:id/edit', async (req, res, next) => {
 
 
   router.post('/:id/edit', fileUploader.single("imageUrl"), async (req, res, next) => {
+
     const { cuisine, title, existingImage, duration, ingredients, preparation } = req.body;
     const { id } = req.params;
     const { path } = req.file;
@@ -150,4 +154,3 @@ router.post('/:recipeId/comment', (req, res, next) => {
 });
 
   module.exports = router;
-  

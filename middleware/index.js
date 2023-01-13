@@ -6,6 +6,7 @@ const isLoggedIn = (req, res, next) => {
     next();
   };
   
+
   const isOwner = (req, res, next) => {
     const recipeId = req.params
     const userId = req.session.currentUser._id
@@ -34,3 +35,5 @@ const isLoggedIn = (req, res, next) => {
     isOwner,
     isNotOwner
   };
+
+
