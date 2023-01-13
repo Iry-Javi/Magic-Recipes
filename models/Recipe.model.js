@@ -18,7 +18,7 @@ const recipeSchema = new Schema(
 
     },
     duration: { 
-      type: Number, min: 0 
+      type: Number, min: 0 ,
     },
     ingredients: { 
       type: [ String ] 
@@ -27,10 +27,10 @@ const recipeSchema = new Schema(
       type: String,
       required: true
     },
-    // owner: {
-    //   type: SchemaTypes.ObjectId,
-    //   ref: 'User',
-    // },
+    owner: {
+      type: SchemaTypes.ObjectId,
+      ref: 'User',
+    },
     comments: 
     [{ type: Schema.Types.ObjectId, ref: "Comment" }]
   },

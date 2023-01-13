@@ -1,13 +1,24 @@
+<div class="bg-image-update-class">
+<main class="vstack gap-2 col-md-5 mx-auto"></main>
 <h2>Update my magic recipie</h2>
 
-<form action="/recipes/{{id}}/edit" method="post">
-    <input type="text" name="cuisine" value="{{cuisine}}">
-    <input type="text" name="title" value="{{name}}">
-    <input type="file" name="imageUrl" value="{{imageUrl}}">
-    <input type="text" name="duration" value="{{duration}}">
-    <input type="text" name="ingredients" value="{{ingredients}}">
-    <input type="text" name="preparation" value="{{preparation}}">
+<form action="/recipes/{{id}}/edit" method="post" enctype="multipart/form-data">
+    <select name="cuisine" class="w-50 h-25  m-50" id="cosine-select">
+    <option value="">--Please choose an option--</option>
+    <option value="latinamerican">Lanin American food</option>
+    <option value="mediterranian">Mediterranian food</option>
+    <option value="asian">Asian food</option>
+    <option value="slavic">Slavic food </option>
+    <option value="italian">Italian food</option>
+    </select>
+    <input type="text" name="title" class="w-50 h-25  m-50" value="{{name}}">
+    <input type="file" name="imageUrl" class="w-50 h-25  m-50" value="{{imageUrl}}">
+    <input type="text" name="duration" class="w-50 h-25  m-50" value="{{duration}}">
+    <input type="text" name="ingredients" class="w-50 h-25  m-75" value="{{ingredients}}">
+    <input type="text" name="preparation" class="w-50 h-25  m-75" value="{{preparation}}">
     <input type="hidden" name="owner" value="{{owner}}">
+    <input type="hidden" name="existingImage" value="{{imageUrl}}">
 
-    <button type="submit">Update Recipe</button>
+    <button type="submit" class="w-50 h-25  m-50">Update Recipe</button>
 </form>
+</div>

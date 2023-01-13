@@ -1,10 +1,10 @@
+<div class="bg-image">
 <h1>All Magic Recipes</h1>
-
 <form action="/recipes">
     <label for="cuisine-select">Choose a cuisine:</label>
     <div class="form-floating">
         <select style="width: 200px;" class="form-select-sm w-25" name="cuisine" id="floatingSelect" aria-label="Floating label select example"onchange="this.form.submit()">
-            <option selected>Open this select menu</option>
+            <option selected>Press this select menu</option>
             <option value="latinamerican">Lanin American food</option>
             <option value="mediterranian">Mediterranian food</option>
             <option value="slavic">Slavic food</option>
@@ -20,13 +20,13 @@
 <h3>{{title}}</h3>
 <img src={{imageUrl}} alt="recipe"/>
 <h4>{{duration}}</h4>
-<h4>{{ingredients}}</h4>
+<h6>{{ingredients}}</h6>
 <p>{{preparation}}</p>
 
 
 <p>{{owner.username}}</p>
 
-<h1>Write comment for {{name}}</h1>
+<h6>Write comment for {{name}}</h6>
 
 <form action="/recipes/{{_id}}/comment" method="post">
     <input type="text" name="comment" placeholder="Write your comment" required>
@@ -34,9 +34,10 @@
 
     <button type="submit">Send Comment</button>
 </form>
-<h4>Comments:</h4>
+<h6>Comments:</h6>
 {{#each this.comments}}
 
 <p>{{comment}}</p> 
 {{/each}}
 {{/each}}
+</div>
