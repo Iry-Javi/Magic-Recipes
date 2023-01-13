@@ -17,12 +17,12 @@ const recipes = [
      comments: []
     },
 
+
     { cuisine: "slavic", 
      title: ' Borscht ', 
      imageUrl: 'https://bigoven-res.cloudinary.com/image/upload/w_300,c_fill,h_250/russian-borscht-f862ef.png', 
      duration: 65, 
      ingredients: `1 package pork sausage', '3 beets', ' 3 carrots', '3 potatoes', 'half head cabbage', '1 cup diced tomatoes', '1 table spoon vegetable oil', '1 onion', '1 can tomato paste', '8 3/4 cups water', '3 cloves garlic', '1 teaspoon white sugar', 'salt and pepper', 'half cup sour cream', '1 tablespoon chopped fresh parsley`, 
-
      preparation: `Step 1. Crumble sausage into a skillet set over medium-high heat. Cook and stir until no longer pink. Remove from the heat and set aside.
      Step 2. Fill a large pot halfway with water (about 8 cups) and bring to a boil.
      Step 3. Add sausage to pot, cover pot, and return to a boil. Add beets and cook until they have lost their color. Add carrots and potatoes and simmer until tender, about 15 minutes.
@@ -33,6 +33,7 @@ const recipes = [
      owner: mongoose.Types.ObjectId('63c10bba681b02f9e9ce8340'), 
      comments: []
     },
+
 
     { cuisine: "mediterranian", 
      title: 'Paella', 
@@ -55,7 +56,7 @@ const recipes = [
     '1 cup fresh peas',
     '5 baby squid, cut into rings and tentacles',
     '1 lemon, cut into wedges',
-    '1 tablespoon chopped fresh flat-leaf parsley'`,  
+    '1 tablespoon chopped fresh flat-leaf parsley'`, 
      preparation: `Step 1. Heat olive oil in a large skillet or paella pan over high heat. Cook and stir onion, tomato, salt, and smoked paprika into the hot oil until softened, about 3 minutes. Add romano beans, butter beans, and rice; cook and stir until rice is coated with oil, 2 to 3 minutes.
      Step 2. Place shrimp, mussels, and clams over the top of the rice mixture. Pour in white wine and seafood stock; sprinkle in saffron threads and rosemary. Bring mixture to a simmer. Turn shellfish and continue to cook until clams and mussels have opened, and shrimp are pink and cooked through, about 5 minutes. Remove clams, mussels, and shrimp and set aside.
      Step 3. Stir peas into the paella; simmer, uncovered, until rice is tender and has absorbed the liquid, 20 to 25 minutes. Stir in squid, and return clams, mussels, and shrimp to the pan. Cook until squid is opaque and cooked through, 2 to 3 more minutes. Serve with lemon wedges and chopped parsley.`, 
@@ -122,17 +123,20 @@ const recipes = [
      comments: []
     }
 
+
 ];
 
 const MONGO_URI =
   process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/project2";
 console.log(MONGO_URI)
+
 mongoose
   .connect(MONGO_URI)
   .then(x => {
     console.log(`Connected to Mongo database: "${x.connections[0].name}"`);
     return Recipe.create(recipes);
   })
+
   .then(recipesFromDB => {
     console.log(`Created ${recipesFromDB.length}recipes`);
     return mongoose.connection.close();
@@ -142,4 +146,4 @@ mongoose
   })
   .catch(err => {
     console.log(`An error occurred while creating recipes from the DB: ${err}`);
-  });
+    });

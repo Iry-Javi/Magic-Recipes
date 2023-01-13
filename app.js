@@ -43,8 +43,7 @@ const recipesRoutes = require("./routes/recipe.routes");
 app.use("/recipes", recipesRoutes);
 
 
-
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
-require("./error-handling")(app);
+// require("./error-handling")(app);
 
 module.exports = app;
