@@ -13,10 +13,11 @@ const { Error } = require('mongoose');
 
 
 router.get('/', async (req, res, next) => {
-  const  {cousine} = req.query
-  if(cousine !== undefined) {
+
+  const  {cuisine} = req.query
+  if(cuisine !== undefined) {
     console.log(req.query)
-    Recipe.find({cousine}).populate("comments")
+    Recipe.find({cuisine}).populate("comments")
     .then(recipes => {
       console.log(recipes.length)
       res.render('recipes/list', {recipes, user:req.session.currentUser})})
@@ -40,12 +41,14 @@ router.get('/create', isLoggedIn, (req, res, next) => {
 
 
 router.post('/create', fileUploader.single("imageUrl"),  (req, res, next) => { //async
-    const {cousine, title, duration, ingredients, preparation} = req.body;
+
+    const {cuisine, title, duration, ingredients, preparation} = req.body;
     console.log(req.file.path)
 
     User.findById(req.session.currentUser._id)
     .then((user)=>{
-      Recipe.create({cousine, title, imageUrl: req.file.path, duration, ingredients, preparation, owner:req.session.currentUser._id})
+
+      Recipe.create({cuisine, title, imageUrl: req.file.path, duration, ingredients, preparation, owner:req.session.currentUser._id})
       .then((newRec) =>{
         console.log('my new recipe', newRec._id)
         user.recipes.push(newRec._id)
@@ -74,7 +77,8 @@ router.get('/:id/edit', async (req, res, next) => {
 
 
   router.post('/:id/edit', fileUploader.single("imageUrl"), async (req, res, next) => {
-    const { cousine, title, existingImage, duration, ingredients, preparation } = req.body;
+
+    const { cuisine, title, existingImage, duration, ingredients, preparation } = req.body;
     const { id } = req.params;
     const { path } = req.file;
   
@@ -87,7 +91,7 @@ router.get('/:id/edit', async (req, res, next) => {
 console.log(imageUrl)
     const theRecipe = await Recipe.findById(id)
     if(theRecipe.owner.toString() === req.session.currentUser._id){
-        Recipe.findByIdAndUpdate(id, {cousine, title, imageUrl, duration, ingredients, preparation })
+        Recipe.findByIdAndUpdate(id, {cuisine, title, imageUrl, duration, ingredients, preparation })
         .then(() => res.redirect('/recipes'))
         .catch(err => console.log(err))
       } 

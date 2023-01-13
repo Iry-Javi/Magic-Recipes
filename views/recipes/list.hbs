@@ -1,19 +1,22 @@
 <h1>All Magic Recipes</h1>
-<form action="/recipes">
 
-    <label for="cousine-select">Choose a cousine:</label>
-    <select name="cousine" id="cosine-select" onchange="this.form.submit()">
-    <option value="">--Please choose an option--</option>
-    <option value="latinamerican">Lanin American food</option>
-    <option value="mediterranian">Mediterranian food</option>
-    <option value="slavic">Slavic food</option>
-    <option value="asian">Asian food</option>
-    <option value="italian">Italian food</option>
-    </select>
+<form action="/recipes">
+    <label for="cuisine-select">Choose a cuisine:</label>
+    <div class="form-floating">
+        <select style="width: 200px;" class="form-select-sm w-25" name="cuisine" id="floatingSelect" aria-label="Floating label select example"onchange="this.form.submit()">
+            <option selected>Open this select menu</option>
+            <option value="latinamerican">Lanin American food</option>
+            <option value="mediterranian">Mediterranian food</option>
+            <option value="slavic">Slavic food</option>
+            <option value="asian">Asian food</option>
+            <option value="italian">Italian food</option>
+        </select>
+</div>
 </form>
 
+
 {{#each recipes}}
-<h4>{{cousine}}</h4>
+<h4>{{cuisine}}</h4>
 <h3>{{title}}</h3>
 <img src={{imageUrl}} alt="recipe"/>
 <h4>{{duration}}</h4>

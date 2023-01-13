@@ -1,11 +1,10 @@
+require("dotenv/config")
 const mongoose = require("mongoose");
 const Recipe = require("../models/Recipe.model"); 
-
-
 const recipes = [
-    { cousine: "italian", 
+    { cuisine: "italian", 
      title: 'Spaghetti Genovese', 
-     imageUrl: 'https://img.taste.com.au/tyTSqefm/w720-h480-cfill-q80/taste/2016/11/spaghetti-alla-genovese-11777-1.jpeg', 
+     imageUrl: 'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-1845_10-e6b81e8.jpg?quality=90&resize=440,400', 
      duration: 25 , 
      ingredients: ['300g potato', '300g spaguetti', '200g trimmed green bean', '120g tub fresh pesto', 'olive oil'], 
      preparation: `step 1
@@ -18,12 +17,12 @@ const recipes = [
      comments: []
     },
 
-    { cousine: "slavic", 
-     title: ' Borscht ', 
-     imageUrl: 'https://static.wixstatic.com/media/293fdb_5c7fdd317f334787bc552e1e380abd58~mv2.jpg', 
-     duration: 65, 
-     ingredients: ['1 package pork sausage', '3 beets', ' 3 carrots', '3 potatoes', 'half head cabbage', '1 cup diced tomatoes', '1 table spoon vegetable oil', '1 onion', '1 can tomato paste', '8 3/4 cups water', '3 cloves garlic', '1 teaspoon white sugar', 'salt and pepper', 'half cup sour cream', '1 tablespoon chopped fresh parsley'], 
 
+    { cuisine: "slavic", 
+     title: ' Borscht ', 
+     imageUrl: 'https://bigoven-res.cloudinary.com/image/upload/w_300,c_fill,h_250/russian-borscht-f862ef.png', 
+     duration: 65, 
+     ingredients: `1 package pork sausage', '3 beets', ' 3 carrots', '3 potatoes', 'half head cabbage', '1 cup diced tomatoes', '1 table spoon vegetable oil', '1 onion', '1 can tomato paste', '8 3/4 cups water', '3 cloves garlic', '1 teaspoon white sugar', 'salt and pepper', 'half cup sour cream', '1 tablespoon chopped fresh parsley`, 
      preparation: `Step 1. Crumble sausage into a skillet set over medium-high heat. Cook and stir until no longer pink. Remove from the heat and set aside.
      Step 2. Fill a large pot halfway with water (about 8 cups) and bring to a boil.
      Step 3. Add sausage to pot, cover pot, and return to a boil. Add beets and cook until they have lost their color. Add carrots and potatoes and simmer until tender, about 15 minutes.
@@ -35,15 +34,16 @@ const recipes = [
      comments: []
     },
 
-    { cousine: "mediterranian", 
+
+    { cuisine: "mediterranian", 
      title: 'Paella', 
-     imageUrl: 'https://www.thespruceeats.com/thmb/rWeSaLTQeF1NJePa_HP5Tabf3jo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/fresh-paella-in-pan-on-wooden-table-556668991-5843564b5f9b5851e5745d5a.jpg', 
+     imageUrl: 'https://madridfree.org/wp-content/uploads/2017/10/arroz-daniela-web-300x250.jpg', 
      duration: 55, 
-     ingredients: [' 2 tablespoons olive oil', '1 onion finely diced', 
-     '½ tomato, finely diced',
-     '1 pinch salt',
-     '½ tablespoon smoked paprika',
-    ' 6 fresh romano or green beans',
+     ingredients: `' 2 tablespoons olive oil', '1 onion finely diced', 
+     '½ tomato, finely diced'
+     '1 pinch salt'
+     '½ tablespoon smoked paprika'
+    ' 6 fresh romano or green beans'
     '½ cup canned butter beans, drained and rinsed', 
     '½ cup white rice', 
     '6 large shrimp',
@@ -54,9 +54,9 @@ const recipes = [
     '1 pinch saffron threads',
     '1 teaspoon finely chopped fresh rosemary',
     '1 cup fresh peas',
-    '5 baby squid cut into rings and tentacles',
-    '1 lemon cut into wedges',
-    '1 tablespoon chopped fresh flat-leaf parsley'],  
+    '5 baby squid, cut into rings and tentacles',
+    '1 lemon, cut into wedges',
+    '1 tablespoon chopped fresh flat-leaf parsley'`, 
      preparation: `Step 1. Heat olive oil in a large skillet or paella pan over high heat. Cook and stir onion, tomato, salt, and smoked paprika into the hot oil until softened, about 3 minutes. Add romano beans, butter beans, and rice; cook and stir until rice is coated with oil, 2 to 3 minutes.
      Step 2. Place shrimp, mussels, and clams over the top of the rice mixture. Pour in white wine and seafood stock; sprinkle in saffron threads and rosemary. Bring mixture to a simmer. Turn shellfish and continue to cook until clams and mussels have opened, and shrimp are pink and cooked through, about 5 minutes. Remove clams, mussels, and shrimp and set aside.
      Step 3. Stir peas into the paella; simmer, uncovered, until rice is tender and has absorbed the liquid, 20 to 25 minutes. Stir in squid, and return clams, mussels, and shrimp to the pan. Cook until squid is opaque and cooked through, 2 to 3 more minutes. Serve with lemon wedges and chopped parsley.`, 
@@ -65,9 +65,9 @@ const recipes = [
 
     },
 
-    { cousine: "asian",
+    { cuisine: "asian", 
      title: ' Miso Soup ', 
-     imageUrl: 'https://files.selecthealth.cloud/api/public/content/221392-Miso_soup_blog_lg.jpg', 
+     imageUrl: 'https://theviewfromgreatisland.com/wp-content/uploads/2015/12/miso-alphabet-soup-7519-December-28-2015-250x250.jpg', 
      duration: 15, 
      ingredients: `· Water: This easy miso soup recipe starts with four cups of water.
      · Dashi granules and miso paste: Dashi granules and miso paste give the soup a bold, savory flavor base.
@@ -83,9 +83,9 @@ const recipes = [
      comments: []
     },
 
-    { cousine: "latinamerican", 
+    { cuisine: "latinamerican", 
      title: ' Chilean Empanadas with Beef ', 
-     imageUrl: 'https://files.selecthealth.cloud/api/public/content/221392-Miso_soup_blog_lg.jpg', 
+     imageUrl: 'https://tastingchile.files.wordpress.com/2010/09/dsc06292-cronistas-empanadas.jpg', 
      duration: 120, 
      ingredients: `For the beef filling:
      2 tablespoons of oil
@@ -126,9 +126,9 @@ const recipes = [
 
 ];
 
-
 const MONGO_URI =
   process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/project2";
+console.log(MONGO_URI)
 
 mongoose
   .connect(MONGO_URI)
@@ -139,7 +139,6 @@ mongoose
 
   .then(recipesFromDB => {
     console.log(`Created ${recipesFromDB.length}recipes`);
- 
     return mongoose.connection.close();
   })
   .then(() => {
@@ -147,4 +146,49 @@ mongoose
   })
   .catch(err => {
     console.log(`An error occurred while creating recipes from the DB: ${err}`);
+
   });
+
+
+// const mongoose = require("mongoose");
+// const Recipe = require("../models/Recipe.model"); // the DroneModel will be used to create new drones in our DB
+
+// // the array of drone objects to be created
+// const recipes = [
+//   { cuisine: "italian", title: 'Italian Pasta', imageUrl: 'public/images/italian-pasta.jpg', duration: '30', ingredients: ['salz', 'flour'], preparation: 'fhfhjgjhg', owner: {}, comments: []},
+  
+//   { cuisine: "italian", title: 'Italian Pasta', imageUrl: 'public/images/italian-pasta.jpg', duration: '30', ingredients: ['salz', 'flour'], preparation: 'fhfhjgjhg', owner: {}, comments: []},
+
+//   { cuisine: "italian", title: 'Italian Pasta', imageUrl: 'public/images/italian-pasta.jpg', duration: '30', ingredients: ['salz', 'flour'], preparation: 'fhfhjgjhg', owner: {}, comments: []}
+
+// ];
+
+// // below is the exact same database connection setup as our main app 'db/index.js'
+// // inside the .then() block we will seed our DB (Once the DB connection is established)
+
+
+// const MONGO_URI =
+//   process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/project2";
+
+// mongoose
+//   .connect(MONGO_URI)
+//   .then(x => {
+//     console.log(`Connected to Mongo database: "${x.connections[0].name}"`);
+ 
+//     // Create new documents in the books collection
+//     return Recipe.create(recipes);
+//   })
+//   .then(recipesFromDB => {
+//     console.log(`Created ${recipesFromDB.length}recipes`);
+ 
+//     // Once the documents are created, close the DB connection
+//     return mongoose.connection.close();
+//   })
+//   .then(() => {
+//     // Once the DB connection is closed, print a message
+//     console.log('DB connection closed!');
+//   })
+//   .catch(err => {
+//     console.log(`An error occurred while creating recipes from the DB: ${err}`);
+//   });
+

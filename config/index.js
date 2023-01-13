@@ -19,7 +19,7 @@ const MongoStore = require("connect-mongo");
 
 // Connects the mongo uri to maintain the same naming structure
 const MONGO_URI =
-  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/project2"; //VERIFICAR AQUI
+  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/project2";
 
 // ℹ️ Serves a custom favicon on each request
 // https://www.npmjs.com/package/serve-favicon

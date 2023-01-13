@@ -1,14 +1,35 @@
 
-  <h2>Signup</h2>
-  <form action="/auth/signup" method="POST">
-      <input type="text" name="username" placeholder="Username" required/>
-      <input type="email" name="email" placeholder="Email" required/>
-      <input type="password" name="password" placeholder="your password" required/>
+<main class="form-signin w-50 m-auto">
+ <form action="/auth/signup" method="POST">
+    <h1 class="h3 mb-3 fw-normal">Please Sign up</h1>
+    
 
-    <button type="submit">Create account</button>
-  </form>
+    <div class="form-floating">
+      <input type="username" class="form-control" id="floatingInput" name="username" placeholder="Username">
+      <label for="floatingInput">Username</label>
+    </div>
 
-  {{#if errorMessage}}
+  <div class="form-floating">
+      <input type="email" class="form-control" id="floatingInput" name="email" placeholder="Email">
+      <label for="floatingInput">Email</label>
+    </div>
 
-    <p class="error">{{errorMessage}}</p>
-  {{/if}}
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2022</p>
+    </form>
+</main>
+
+
+  
+
+  

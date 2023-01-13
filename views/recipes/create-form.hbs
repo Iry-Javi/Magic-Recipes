@@ -1,13 +1,15 @@
-<h2>Create my Magic Recipe</h2>
- 
+  
+ <div class="d-flex-justify-content-center ">
+  <main class="vstack gap-2 col-md-5 mx-auto">
+  <h2>Create my Magic Recipe</h2>
   <form action="/recipes/create" method="post" enctype="multipart/form-data">
-    <input type="text" name="title" placeholder="Title" required/>
-    <input type="file" name="imageUrl" placeholder="Image URL"/>
-    <input type="text" name="duration" placeholder="Duration" required/>
-    <input type="text" name="ingredients" placeholder="Ingredients" required/>
-    <input type="text" name="preparation" placeholder="How to cook" required/>
+    <input type="text" name="title" class="w-50 h-25  m-50" placeholder="Title" required/>
+    <input type="file" name="imageUrl" class="w-50 h-25  m-50" placeholder="Image URL">
+    <input type="text" name="duration" class="w-50 h-25  m-50" placeholder="Duration" required/>
+    <input type="textarea" name="ingredients" class="w-50  m-75" placeholder="Ingredients" required/>
+    <input type="textarea" name="preparation" class="w-50  m-75" placeholder="How to cook" required/>
     
-  <select name="cousine" id="cosine-select">
+  <select name="cuisine" class="w-50 h-25  m-50" id="cosine-select">
     <option value="">--Please choose an option--</option>
     <option value="latinamerican">Lanin American food</option>
     <option value="mediterranian">Mediterranian food</option>
@@ -16,5 +18,7 @@
     <option value="italian">Italian food</option>
     </select>
 
-    <button type="submit">Create Magic Recipe</button>
+    <button type="submit" class="w-50 h-25  m-50">Create Magic Recipe</button>
   </form>
+  </main>
+  </div>
